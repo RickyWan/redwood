@@ -1,7 +1,6 @@
 import execa from 'execa'
 import Listr from 'listr'
 import VerboseRenderer from 'listr-verbose-renderer'
-
 import { getPaths } from 'src/lib'
 import c from 'src/lib/colors'
 import { handler as generatePrismaClient } from 'src/commands/dbCommands/generate'
@@ -9,7 +8,7 @@ import { handler as generatePrismaClient } from 'src/commands/dbCommands/generat
 export const command = 'build [app..]'
 export const desc = 'Build for production.'
 export const builder = {
-  app: { choices: ['api', 'web'], default: ['api', 'web'] },
+  app: { type: 'array', choices: ['api', 'web'], default: ['api', 'web'] },
   verbose: { type: 'boolean', default: false, alias: ['v'] },
   stats: { type: 'boolean', default: false },
 }
